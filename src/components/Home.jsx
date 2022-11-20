@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import profile from '../images/profile.png';
+import profile from '../images/profile.jpg';
+import profileavatar from '../images/profileavatar.png';
 import narutoPull from '../images/naruto-pull.gif';
 // import ohayo from '../audio/Azu-nyan Ohayo.mp3';
 // import konnichiwa from '../audio/Cute Konnichiwa.mp3';
@@ -90,7 +91,7 @@ const Home = () => {
 				<div className="bg-style-xsmall"></div>
 				<div className="bg-style"></div>
 				<div className="bg-style-small bg-style-small-half"></div>
-				<img src={profile} alt="profile" />
+				<img src={profileavatar} alt="profile" />
 			</section>
 			<article className="home-page">
 				<div className="hello">

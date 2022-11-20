@@ -23,6 +23,7 @@ import Screen from './components/Screen';
 import Resume from './components/Resume';
 import Navbar from './components/Navbar';
 import Mode from './components/Mode';
+import Resumee from './components/Resumee';
 function App() {
 	const [colorScheme, setColorScheme] = useState('light');
 
@@ -59,7 +60,8 @@ function App() {
 					<Route path="/submit" element={<Submit />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/screen" element={<Screen />} />
-					<Route path="/resume" element={<Resume />} />
+					<Route path="/resumee" element={<Resume />} />
+					<Route path="/resume" element={<Resumee />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
 				<Sidenav />

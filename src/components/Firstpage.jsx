@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import mine from '../images/profile.png';
+import mine from '../images/profile.jpg';
 
 const Firstpage = () => {
 	const navigate = useNavigate();

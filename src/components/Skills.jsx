@@ -71,8 +71,19 @@ const Skills = () => {
 					<div>
 						<div>2022</div>
 						<div>
-							<h1>Internship at aptLearn</h1>
-							<p>Developed UI Pages and Components of the company's website</p>
+							<h1>Software Engineer | Frontend Developer</h1>
+							<p>
+								aptLearn | United Kingdom | September 2022 - Present <br />{' '}
+								<br />
+								Built company's Website with other team members, aptLearn is an
+								online learning platform for learners to learn different
+								technical skills online
+							</p>
+							<h1>Internship at BigSolve Technology Ltd</h1>
+							<p>
+								Worked on building a Web App called Franca where users can learn
+								languages
+							</p>
 							<h1>Internship at Crediometer</h1>
 							<p>Implemented UI Components and making use of API calls</p>
 							<h1>Personal Project | Mabifus Health Care</h1>

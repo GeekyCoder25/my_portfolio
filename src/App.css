@@ -19,6 +19,8 @@ a {
 	color: var(--textColor);
 }
 body {
+	max-width: 2500px;
+	margin: auto;
 	font-family: helvetica;
 	overflow-x: hidden;
 	font-family: 'Space Grotesk';
@@ -52,7 +54,6 @@ body {
 	--aboutBoxShadow: rgb(207 207 207);
 }
 .App {
-	max-width: 2500px;
 	margin: auto;
 	height: 100%;
 	min-height: 100vh;
@@ -137,8 +138,8 @@ nav .colorSchemeMobile i {
 	z-index: 9999;
 }
 .first-page img {
-	width: 15vw;
-	height: 15vw;
+	width: 11vw;
+	height: 12vw;
 	max-width: 500px;
 	max-height: 500px;
 	border-radius: 50%;
@@ -514,8 +515,8 @@ article > h1 {
 	align-items: center;
 	color: #fff;
 	font-size: 2.5rem;
-	padding: 20px;
-	box-shadow: 1px 2px 15px var(--boxShadow);
+	/* padding: 20px; */
+	/* box-shadow: 1px 2px 15px var(--boxShadow); */
 	cursor: pointer;
 	transition: transform 1s ease;
 }
@@ -724,7 +725,8 @@ article > h1 {
 }
 .about-page .about-content img {
 	width: 200px;
-	background-color: #000;
+	height: 200px;
+	/* background-color: #000; */
 	border-radius: 50%;
 }
 .about-page .about-content div {

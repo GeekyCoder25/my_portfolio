@@ -136,7 +136,7 @@ const Home = () => {
 						testable, effiecient code and resusable components using current
 						best practices in Web Development. Fast leaner, hard worker, who is
 						proficient in array scripting languages and multimedia Web tools.
-						I'm skilled and proficient in{' '}
+						I'm skilled and proficient in
 						<b>
 							HTML, CSS, JavaScript, JQuery, React, Next JS, TypeScript,
 							Tailwind CSS, Node JS.
