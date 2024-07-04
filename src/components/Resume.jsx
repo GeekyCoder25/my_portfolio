@@ -1,255 +1,312 @@
-// import mine from '../images/mine.jpg';
-import html from '../images/html.png';
-import css from '../images/css.png';
-import js from '../images/JS.png';
-import react from '../images/react.png';
-import next from '../images/next.png';
-import typescript from '../images/typescript.png';
-import jquery from '../images/jquery.svg';
-import node from '../images/node.png';
-import express from '../images/express.png';
-import mongodb from '../images/mongodb.png';
-import git from '../images/git.svg';
+import styles from '../styles/resume.module.css';
+import mine from '../images/profile.jpg';
+import html from '../images/skills/html.png';
+import css from '../images/skills/css.png';
+import js from '../images/skills/JS.png';
+import react from '../images/skills/react.png';
+import next from '../images/skills/next.png';
+import typescript from '../images/skills/typescript.png';
+import jquery from '../images/skills/jquery.svg';
+import node from '../images/skills/node.png';
+import express from '../images/skills/express.png';
+import mongodb from '../images/skills/mongodb.png';
+import git from '../images/skills/git.svg';
+import {useState} from 'react';
+import {useEffect} from 'react';
+import {BASE_API_URL} from '../constants';
 
-const Home = () => {
+const Resume = () => {
+	const [profile, setProfile] = useState(null);
+	const [skills, setSkills] = useState([
+		{name: 'HTML', icon: html},
+		{name: 'CSS', icon: css},
+		{name: 'JavaScript', icon: js},
+		{name: 'Typescript', icon: typescript},
+		{name: 'React', icon: react},
+		{name: 'React Native', icon: react},
+		{name: 'Next JS', icon: next},
+		{name: 'jQuery', icon: jquery},
+		{name: 'Node', icon: node},
+		{name: 'Express', icon: express},
+		{name: 'Mongodb', icon: mongodb},
+		{name: 'GIT', icon: git},
+	]);
+
+	const [experiences, setExperiences] = useState([]);
+	const [projects, setProjects] = useState([]);
+
+	useEffect(() => {
+		const getProfile = async () => {
+			try {
+				const res = await fetch(`${BASE_API_URL}/profile`);
+				const data = await res.json();
+				if (res.status === 200) {
+					setProfile(data);
+				}
+			} catch (error) {
+				console.error('Error fetching profile:', error);
+			}
+		};
+		const fetchSkills = async () => {
+			try {
+				const res = await fetch(`${BASE_API_URL}/skill`);
+				const data = await res.json();
+				if (res.status === 200) {
+					const combinedSkills = [...skills, ...data];
+					const skillsWithPosition = combinedSkills.map((skill, index) => ({
+						...skill,
+						position: skill.position || index + 2,
+					}));
+					const sortedSkills = skillsWithPosition.sort(
+						(a, b) => a.position - b.position
+					);
+					setSkills(sortedSkills);
+				}
+			} catch (error) {
+				console.error('Error fetching skills:', error);
+			}
+		};
+
+		const fetchExperience = async () => {
+			try {
+				const res = await fetch(`${BASE_API_URL}/experience`);
+				const data = await res.json();
+				if (res.status === 200) {
+					const combinedExperiences = [...experiences, ...data];
+					const experiencesWithPosition = combinedExperiences.map(
+						(experience, index) => ({
+							...experience,
+							position: experience.position || index + 2,
+						})
+					);
+					const sortedExperiences = experiencesWithPosition.sort(
+						(a, b) => a.position - b.position
+					);
+					console.log(setExperiences);
+					setExperiences(sortedExperiences);
+				}
+			} catch (error) {
+				console.error('Error fetching experiences:', error);
+			}
+		};
+
+		const fetchProjects = async () => {
+			try {
+				const res = await fetch(`${BASE_API_URL}/project`);
+				const data = await res.json();
+				if (res.status === 200) {
+					const combinedProjects = [...projects, ...data];
+					const projectsWithPosition = combinedProjects.map(
+						(project, index) => ({
+							...project,
+							position: project.position || index + 2,
+						})
+					);
+					const sortedProjects = projectsWithPosition.sort(
+						(a, b) => a.position - b.position
+					);
+					setProjects(sortedProjects);
+				}
+			} catch (error) {
+				console.error('Error fetching projects:', error);
+			}
+		};
+
+		fetchSkills();
+		fetchExperience();
+		fetchProjects();
+		getProfile();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
-		<div className="resume">
-			<aside>
-				<section className="profile">
-					{/* <img src={mine} alt="mine" className="mine" /> */}
-					<h1>Toyyib Lawal</h1>
-					<p>Front-End Developer</p>
+		<div className={styles.resume}>
+			<div>
+				<header>
+					<span></span>
 					<div>
-						<a
-							href="mailto:toyibe25@gmail.com"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<i className="fas fa-envelope"></i>
-							toyibe25@gmail.com
-						</a>
+						<h1>Toyyib Lawal</h1>
+						<h4>Web and Mobile App Developer</h4>
 					</div>
-					<div>
-						<i className="fas fa-phone"></i>
-						(234) 9073002599
-					</div>
-					<div>
-						<i className="fas fa-location-dot"></i>
-						Ilorin, Nigera
-					</div>
-					<div>
-						<a
-							href="https://linkedin.com/in/toyib-lawal"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<i className="fab fa-linkedin"></i>
-							linkedin.com/in/toyib-lawal
-						</a>
-					</div>
-					<div>
-						<a
-							href="https://github.com/GeekyCoder25"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<i className="fab fa-github"></i>
-							github.com/GeekyCoder25
-						</a>
-					</div>
-				</section>
-				<section className="about">
-					<div>
-						<h1>EDUCATION</h1>
-						<p>Bachelor of Engineering</p>
-						<p>Computer Engineering</p>
-						<p className="school">Bayero University</p>
+				</header>
+				<main>
+					<section>
+						<div></div>
+						<div className={styles.img}>
+							<img src={mine} alt="" />
+						</div>
+						<aside>
+							<h4>CONTACT</h4>
+							<div>
+								<a
+									href="mailto:toyibe25@gmail.com"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<i className="fas fa-envelope"></i>
+									<span>toyibe25@gmail.com</span>
+								</a>
+							</div>
+							<div>
+								<a href="tel:+2349073002599">
+									<i className="fas fa-phone"></i>
+									<span>(234) 9073002599</span>
+								</a>
+							</div>
+							<div>
+								<i className="fas fa-location-dot"></i>
+								<span>Ilorin, Nigera</span>
+							</div>
+							<div>
+								<a
+									href="https://linkedin.com/in/toyyib-lawal"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<i className="fab fa-linkedin"></i>
+									<span>linkedin.com/in/toyyib-lawal</span>
+								</a>
+							</div>
+							<div>
+								<a
+									href="https://github.com/GeekyCoder25"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<i className="fab fa-github"></i>
+									<span>github.com/GeekyCoder25</span>
+								</a>
+							</div>
+							<h4>EDUCATION</h4>
+							<p>Bachelor of Engineering</p>
+							<p>Computer Engineering</p>
+							<p className="school">Bayero University, Kano</p>
+							{/* <p>
+								<i className="fas fa-calendar"></i>2019 - Present
+							</p> */}
+							<p>
+								<i className="fas fa-location-dot"></i>Kano, Nigeria
+							</p>
+							<h4>SKILLS</h4>
+							{skills.map((skill, index) => (
+								<p key={index} className={styles.skill}>
+									<img src={skill.icon} alt={skill.name.toLowerCase()} />
+									{skill.name}
+								</p>
+							))}
+							<h4>Awards</h4>
+							<ul>
+								<li>
+									<a href="https://toyib.vercel.app/certificates">
+										Sololearn Certificates
+									</a>
+								</li>
+								<li>
+									<a href="https://toyib.vercel.app/certificates">
+										aptlearn Certificate
+									</a>
+								</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div>
+							<h4>PROFILE</h4>
 
-						{/* <p>
-							<i className="fas fa-calendar"></i>2020 - Present
-						</p> */}
-						<p>
-							<i className="fas fa-location-dot"></i>Kano, Nigeria
-						</p>
-					</div>
-					<h1>SKILLS</h1>
-					<h2>Languages</h2>
-					<p className="image">
-						<img src={html} alt="html" />
-						HTML
-					</p>
-					<p className="image">
-						<img src={css} alt="css" />
-						CSS
-					</p>
-					<p className="image">
-						<img src={js} alt="js" />
-						JavaScript
-					</p>
-					<p className="image">
-						<img src={typescript} alt="typescript" />
-						Typescript
-					</p>
-					<h2>Libraries & Frameworks</h2>
-					<p className="image">
-						<img src={react} alt="react" />
-						React
-					</p>
-					<p className="image">
-						<img src={react} alt="react" />
-						React Native
-					</p>
-					<p className="image">
-						<img src={next} alt="next" />
-						Next JS
-					</p>
-					<p className="image" style={{ marginBottom: '10px' }}>
-						<img src={jquery} alt="jquery" />
-						jQuery
-					</p>
-					<p className="image">
-						<img src={node} alt="node" />
-						Node
-					</p>
-					<p className="image">
-						<img src={express} alt="express" />
-						Express
-					</p>
-					<p className="image">
-						<img src={mongodb} alt="mongodb" />
-						Mongodb
-					</p>
-					<h2>CI/CD</h2>
-					<p className="image">
-						<img src={git} alt="git" />
-						GIT
-					</p>
-				</section>
-			</aside>
-			<main>
-				<section>
-					<h1>PROFILE</h1>
-					<p>
-						Frontend Developer with 3 years of frontend experience able to build
-						a web presence from the ground up, with passion and dedication for
-						responsive website design. I'm skilled at writing well-designed,
-						testable, effiecient code and resusable components using current
-						best practices in Web Development. Fast leaner, hard worker, who is
-						proficient in array scripting languages and multimedia Web tools.
-						I'm skilled and proficient in
-						<b>
-							HTML, CSS, JavaScript, JQuery, React, Next JS, TypeScript,
-							Tailwind CSS, Node JS.
-						</b>
-					</p>
-				</section>
-				<section className="work">
-					<h1>AREAS OF INTEREST</h1>
-					<ul>
-						<li>Web Development</li>
-						<li>Mobile App Development</li>
-						<li>Blogging</li>
-						<li>Open Source</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Experiences</h1>
-					<ul>
-						<li>
-							<b>Internship at Crediometer</b>
-							<p>JULY 2022 - PRESENT | NIGERIA - REMOTE</p>
-							<p>Implemented UI Components and making use of API calls</p>
-						</li>
-
-						<li>
-							Implemented Website and Landing pages from concept through
-							development
-						</li>
-						<li>
-							Standardized all outputs with a new, responsive, mobile-first
-							approach and strategy
-						</li>
-						<li>Assessed UX and UI designs for technical feasibilty</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Personal Projects</h1>
-					<p>Some of past projects include:</p>
-					<ul className="links">
-						<li>
-							<a href="https://mabifus.vercel.app/" rel="noreferrer">
-								Mabifus Health Care
-							</a>
-						</li>
-						<li>
-							<a href="https://toyib.vercel.app/" rel="noreferrer">
-								Portfolio
-							</a>
-						</li>
-						<li>
-							<a href="https://qoreeb.vercel.app/" rel="noreferrer">
-								Magnificent Portfolio
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://geekycoder25.github.io/Dees-Estate/"
-								rel="noreferrer"
-							>
-								Dee's Estate
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://geekycoder25.github.io/Skillers/"
-								rel="noreferrer"
-							>
-								Skillers
-							</a>
-						</li>
-						<li>
-							<a href="https://geekycoder25.github.io/Snap/" rel="noreferrer">
-								Snap
-							</a>
-						</li>
-						<li>
-							{' '}
-							<a
-								href="https://geekycoder25.github.io/MagVerse/
-                                "
-								rel="noreferrer"
-							>
-								Magverse
-							</a>
-						</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Certificates</h1>
-					<p>
-						<b>SoloLearn</b> Web Development Certification in HTML, CSS,
-						JavaScript, React & Redux, Jquery, Responsive Web Design, etc.
-						<span className="resume-certi">
-							A list of my certificates on my portfolio is{' '}
-							<a
-								href="https://toyib.vercel.app/certificates"
-								style={{ display: 'inline' }}
-							>
-								here
-							</a>
-						</span>
-					</p>
-				</section>
-				<section>
-					<h1>Languages</h1>
-					<ul>
-						<li>Yoruba - Native</li>
-						<li>English - Fluent</li>
-					</ul>
-				</section>
-			</main>
+							{profile ? (
+								<p>{profile}</p>
+							) : (
+								<p>
+									Innovative, task-driven professional with over 3 years of
+									experience in web and mobile application development, adept at
+									identifying and fulfilling technological needs through
+									ingenious solutions. Proficient in advanced front-end and
+									back-end technologies including{' '}
+									{skills &&
+										skills.map(skill => (
+											<span key={skill.name}>
+												{skill.name}
+												<span>,</span>{' '}
+											</span>
+										))}
+									. Experienced in building user-friendly interfaces,
+									implementing secure authentication, creating scalable
+									architectures, and enhancing user engagement.
+								</p>
+							)}
+						</div>
+						{experiences.length > 0 && (
+							<div className={styles.experience}>
+								<h4>WORK EXPERIENCE</h4>
+								{experiences.map(experience => (
+									<div key={experience._id}>
+										<h5>{experience.title}</h5>
+										<p>
+											{experience.company} | {experience.country} |{' '}
+											{new Date(experience.start).toLocaleDateString('en-US', {
+												month: 'long',
+												year: 'numeric',
+											})}{' '}
+											-{' '}
+											{experience.end
+												? new Date(experience.end).toLocaleDateString('en-US', {
+														month: 'long',
+														year: 'numeric',
+												  })
+												: 'present'}
+											{experience.link && (
+												<a
+													href={experience.link}
+													target="_blank"
+													rel="noreferrer"
+												>
+													<i className="fas fa-up-right-from-square"></i>
+												</a>
+											)}
+										</p>
+										<ul>
+											{experience.about}.
+											{experience.points.map((point, index) => (
+												<li key={index}>
+													{point.title} {!point.title.endsWith('.') && '.'}
+												</li>
+											))}
+										</ul>
+									</div>
+								))}
+							</div>
+						)}
+						{projects.length > 0 && (
+							<div className={styles.projects}>
+								<h4>PERSONAL PROJECTS</h4>
+								{projects.map(project => (
+									<div key={project._id} className={styles.project}>
+										<i className="fas fa-angles-right"></i>
+										<div>
+											<a href={project.link} target="_blank" rel="noreferrer">
+												<span>{project.title}</span>
+											</a>
+											<p>{project.about}</p>
+											{project.link && (
+												<a
+													href={project.link}
+													className={styles.clickLink}
+													target="_blank"
+													rel="noreferrer"
+												>
+													Click here to check it out
+												</a>
+											)}
+										</div>
+									</div>
+								))}
+							</div>
+						)}
+					</section>
+				</main>
+			</div>
+			<span></span>
 		</div>
 	);
 };
-
-export default Home;
+export default Resume;

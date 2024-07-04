@@ -4,7 +4,7 @@ import {
 	Routes,
 	Route,
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import './App.css';
 import './fontawesome-free-6.1.1-web/css/all.css';
 import ScrollToTop from './components/ScrollToTop';
@@ -23,7 +23,8 @@ import Screen from './components/Screen';
 import Resume from './components/Resume';
 import Navbar from './components/Navbar';
 import Mode from './components/Mode';
-import Resumee from './components/Resumee';
+import Resumee from './components/Resume1';
+
 function App() {
 	const [colorScheme, setColorScheme] = useState('light');
 
@@ -60,8 +61,8 @@ function App() {
 					<Route path="/submit" element={<Submit />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/screen" element={<Screen />} />
-					<Route path="/resumee" element={<Resume />} />
-					<Route path="/resume" element={<Resumee />} />
+					<Route path="/resume" element={<Resume />} />
+					<Route path="/resume1" element={<Resumee />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
 				<Sidenav />

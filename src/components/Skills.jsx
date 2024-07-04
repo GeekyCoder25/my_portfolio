@@ -1,14 +1,14 @@
-import html from '../images/html.png';
-import css from '../images/css.png';
-import js from '../images/JS.png';
-import react from '../images/react.png';
-import jquery from '../images/jquery.svg';
-import git from '../images/git.svg';
-import typescript from '../images/typescript.png';
-import node from '../images/node.png';
-import express from '../images/express.png';
-import mongodb from '../images/mongodb.png';
-import next from '../images/next.png';
+import html from '../images/skills/html.png';
+import css from '../images/skills/css.png';
+import js from '../images/skills/JS.png';
+import react from '../images/skills/react.png';
+import jquery from '../images/skills/jquery.svg';
+import git from '../images/skills/git.svg';
+import typescript from '../images/skills/typescript.png';
+import node from '../images/skills/node.png';
+import express from '../images/skills/express.png';
+import mongodb from '../images/skills/mongodb.png';
+import next from '../images/skills/next.png';
 import Socials from './Socials';
 import Footer from './Footer';
 
@@ -35,7 +35,7 @@ const Skills = () => {
 						React
 					</p>
 					<p className="image next-logo">
-						<img src={next} alt="next" style={{ objectFit: 'contain' }} />
+						<img src={next} alt="next" style={{objectFit: 'contain'}} />
 						Next JS
 					</p>
 					<p className="image jq-logo">
@@ -59,7 +59,7 @@ const Skills = () => {
 						Node JS
 					</p>
 					<p className="express-logo">
-						<img src={express} alt="express" style={{ objectFit: 'contain' }} />
+						<img src={express} alt="express" style={{objectFit: 'contain'}} />
 						Express
 					</p>
 					<p className="mongodb-logo">

@@ -14,9 +14,9 @@ html {
 .resume {
 	margin: auto;
 	max-width: 210mm;
-	max-height: 297mm;
+	/* max-height: 297mm;  */
 	box-shadow: 0 10px 8px rgb(0 0 0 / 0.04), 0 4px 3px rgb(0 0 0 / 0.1);
-	background: #dfdfdf;
+	background: #fff;
 	position: relative;
 	overflow: hidden;
 	font-family: Poppins;
@@ -27,7 +27,7 @@ html {
 }
 .resume > div {
 	width: 99%;
-	height: 297mm;
+	/* height: 297mm; */
 	margin: auto;
 }
 .resume header {
@@ -94,8 +94,6 @@ html {
 	transform: translateY(-50px);
 }
 .resume main {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
 	height: 100%;
 }
 .resume main section:nth-child(1)::before {
@@ -110,54 +108,64 @@ html {
 }
 .resume main section:nth-child(1) {
 	position: relative;
+	background: #dfdfdf;
+	height: auto;
+	float: left;
+	margin-right: 30px;
 }
 .resume main section:nth-child(2) {
 	padding: 130px 30px 30px 25px;
-	grid-column: 2 / -1;
 	background: #fff;
 	height: 100%;
 }
-.resume article {
-	transform: translateY(-140px);
+.resume aside {
+	transform: translateY(-20px);
 	position: sticky;
 	z-index: 99;
-	width: 85%;
+	width: 260px;
 	margin: auto;
+	padding: 0 20px;
 }
-.resume article h4 {
+.resume aside h4 {
 	margin: 15px auto 10px;
 	font-weight: 800;
 	font-size: 1.1rem;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.resume article i {
+.resume aside i {
 	margin-right: 10px;
 }
-.resume article > div,
-.resume article > p {
+.resume aside > div,
+.resume aside > p {
 	display: flex;
 	align-items: center;
 	line-height: 28px;
 }
-.resume article .fas,
-.resume article .fab {
+.resume aside a {
+	align-items: center;
+	display: flex;
+	text-wrap: nowrap;
+}
+.resume aside .fas,
+.resume aside .fab {
 	margin-right: 10px;
 }
-.resume article .image {
+.resume aside .image {
 	display: flex;
 }
-.resume article img {
+.resume aside img {
 	width: 25px;
 	margin-right: 10px;
 }
-.resume article .skill {
+.resume aside .skill {
 	margin-bottom: 10px;
 }
 .resume ul {
 	margin-top: 5px;
 }
 .resume ul li {
-	margin-left: 30px;
+	transform: translateX(30px);
+	margin-right: 30px;
 }
 .resume main section:nth-child(2) div {
 	margin-bottom: 30px;
@@ -198,4 +206,17 @@ html {
 }
 .resume .projects a:last-child span span {
 	display: none;
+}
+
+.resume .projects .project i {
+	margin-top: 5px;
+}
+.resume .projects .project {
+	display: flex;
+	gap: 20px;
+}
+.clickLink {
+	margin-top: 5px;
+	display: inline-block;
+	text-decoration: underline;
 }
