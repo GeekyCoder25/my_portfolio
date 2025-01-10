@@ -39,6 +39,7 @@ const Resume = () => {
 		const getProfile = async () => {
 			try {
 				const res = await fetch(`${BASE_API_URL}/profile`);
+
 				const data = await res.json();
 				if (res.status === 200) {
 					setProfile(data);
@@ -52,6 +53,7 @@ const Resume = () => {
 				const res = await fetch(`${BASE_API_URL}/skill`);
 				const data = await res.json();
 				if (res.status === 200) {
+					console.log(data);
 					const combinedSkills = [...skills, ...data];
 					const skillsWithPosition = combinedSkills.map((skill, index) => ({
 						...skill,
@@ -82,7 +84,6 @@ const Resume = () => {
 					const sortedExperiences = experiencesWithPosition.sort(
 						(a, b) => a.position - b.position
 					);
-					console.log(setExperiences);
 					setExperiences(sortedExperiences);
 				}
 			} catch (error) {
@@ -132,9 +133,7 @@ const Resume = () => {
 				<main>
 					<section>
 						<div></div>
-						<div className={styles.img}>
-							<img src={mine} alt="" />
-						</div>
+						<div className={styles.img}>{/* <img src={mine} alt="" /> */}</div>
 						<aside>
 							<h4>CONTACT</h4>
 							<div>
