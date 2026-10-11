@@ -1,29 +1,17 @@
-# My Personal Portolio
+# Toyyib Lawal · Portfolio
 
-This project was created with React, it showcases my skills, certificates, and projects. Lie version [here](https://toyib.vercel.app)
+Live at [toyib.vercel.app](https://toyib.vercel.app).
 
-A Fullstack Web Developer with 3 years of web development experience. I spend my whole day, practically everyday expanding my skillset, I love getiing my hands on projects that looks complex to me and its fun been able to complete it at the end. I have experience with
+A single static page (`public/index.html`) with no framework or dependencies. It covers selected work with App Store and Google Play links, experience, stack and contact details.
 
-- React
-- Next JS
-- Node JS
-- Express
-- JavaScript
-- TypeScript
-- HTML
-- CSS
-- Tailwind CSS
-- MongoDB
-- Mongoose
-- JQuery
-- React Native
-- GIT and Github.
+## Run locally
 
-I've built different projects and webpages with the skills mentioned above. I'm interested in all things tech and currently expanding my knowledge and skillset.
-To list a few of my promiment characteristics:
+```sh
+npm start        # serves public/ at http://localhost:3000
+```
 
-- Responsible
-- Proficient
-- Hard working
-- Communicative
-- A team player
+## Deploy
+
+`npm run build` copies `public/` to `build/`, which is the output folder Vercel serves.
+
+The previous React version of this site is kept in git history before the `2.0.0` commit.
